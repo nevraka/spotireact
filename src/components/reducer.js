@@ -4,13 +4,11 @@ export const initialState = {
   playing: false,
   item: null,
   //REMOVE after finished developing..
-  token:
-    'BQCu5DsjNVpZ90scnHfKvl_3kwLK-4DRlaYlAzQlP7sZf8mxoOtymfcucu8nKjfKH1BwR32CIUIAo-emi-VDSooHQ1890gNB3OV19uVmhtLA4SG57VIx6YAjDi8ivQj9MIWoiyRUWegogpGK',
+  //token:
+  // 'BQCu5DsjNVpZ90scnHfKvl_3kwLK-4DRlaYlAzQlP7sZf8mxoOtymfcucu8nKjfKH1BwR32CIUIAo-emi-VDSooHQ1890gNB3OV19uVmhtLA4SG57VIx6YAjDi8ivQj9MIWoiyRUWegogpGK',
 };
 
-const reducer = (state, action) => {
-  console.log('action.type', action.type);
-
+const reducer = (state, action, playlists) => {
   // Action--> type,[payload]
   switch (action.type) {
     case 'SET_USER':
@@ -20,10 +18,21 @@ const reducer = (state, action) => {
       };
 
     case 'SET_TOKEN':
-      console.log('action.token', action.token);
       return {
         ...state,
         token: action.token,
+      };
+
+    case 'SET_PLAYLISTS':
+      return {
+        ...state,
+        playlists: action.playlists,
+      };
+
+    case 'SET_DISCOVER_WEEKLY':
+      return {
+        ...state,
+        discover_weekly: action.discover_weekly,
       };
     default:
       return state;
